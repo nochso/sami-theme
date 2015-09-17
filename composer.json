@@ -1,0 +1,23 @@
+{
+  "name": "nochso/sami-theme",
+  "description": "A Sami theme with inline source code",
+  "keywords": ["sami", "theme", "source", "template", "documentation"],
+  "homepage": "https://github.com/nochso/sami-theme",
+  "license": "ISC",
+  "authors": [
+    {
+      "name": "Marcel Voigt",
+      "email": "mv@noch.so",
+      "homepage": "http://noch.so"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/nochso/sami-theme/issues"
+  },
+  "require-dev": {
+    "sami/sami": "^3.0"
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
