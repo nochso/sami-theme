@@ -1,0 +1,26 @@
+name: nochso
+
+static:
+  'css/min.css': 'css/min.css'
+  'css/normalize.css': 'css/normalize.css'
+  'css/prism.css': 'css/prism.css'
+  'js/prism.js': 'js/prism.js'
+#  'js/handlebars.min.js': 'js/handlebars.min.js'
+#  'js/typeahead.min.js': 'js/typeahead.min.js'
+
+global:
+  'index.twig':      'index.html'
+  'doc-index.twig':  'doc-index.html'
+  'namespaces.twig': 'namespaces.html'
+  'classes.twig':    'classes.html'
+  'interfaces.twig': 'interfaces.html'
+  'traits.twig':     'traits.html'
+#  'opensearch.twig': 'opensearch.xml'
+#  'search.twig':     'search.html'
+#  'sami.js.twig':    'sami.js'
+
+namespace:
+  'namespace.twig': '%s.html'
+
+class:
+#  'class.twig': '%s.html'

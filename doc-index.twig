@@ -1,0 +1,65 @@
+{% extends "layout/layout.twig" %}
+{% from "macros.twig" import class_link, namespace_link, method_link, method_link_short, property_link %}
+{% block title %}Index | {{ parent() }}{% endblock %}
+{% block body_class 'doc-index' %}
+
+{% block page_content %}
+
+  <h1>Index</h1>
+
+  <p>This is an index of the following types:</p>
+  <ul>
+    <li>Class</li>
+    <li>Interface</li>
+    <li>Method</li>
+    <li>Property</li>
+    <li>Trait</li>
+  </ul>
+  <p>The first column is the type's initial character.</p>
+  <hr />
+  <ul class="pagination">
+    {% for letter, elements in items %}
+      {% if items[letter] is defined and items[letter]|length > 1 %}
+        <li><a href="#letter{{ letter }}">{{ letter }}</a></li>
+      {% else %}
+        <li class="disabled"><a href="#letter{{ letter }}">{{ letter }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {% for letter, elements in items -%}
+    <h2 id="letter{{ letter }}">{{ letter }}</h2>
+    <table class="table">
+      {% if loop.first %}
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Origin</th>
+          <th>Description</th>
+        </tr>
+      {% endif %}
+      {%- for element in elements %}
+        <tr>
+        {%- set type = element[0] %}
+        {%- set value = element[1] %}
+        {%- if 'class' == type -%}
+          <td>{% if value.isInterface %}I{% elseif value.trait %}T{% else %}C{% endif %}</td>
+          <td>{{ class_link(value) }}</td>
+          <td>{% if has_namespaces %}{{ namespace_link(value.namespace) }}{% endif %}</td>
+          <td>{{ value.shortdesc|desc(value) }}</td>
+        {%- elseif 'method' == type -%}
+          <td>M</td>
+          <td>{{ method_link_short(value) }}()</td>
+          <td>{{ class_link(value.class) }}</td>
+          <td>{{ value.shortdesc|desc(value.class) }}</td>
+        {%- elseif 'property' == type -%}
+          <td>P</td>
+          <td>${{ property_link(value) }}</td>
+          <td>{{ class_link(value.class) }}</td>
+          <td>{{ value.shortdesc|desc(value.class) }}</td>
+        {%- endif %}
+        </tr>
+      {%- endfor %}
+    </table>
+  {%- endfor %}
+{% endblock %}

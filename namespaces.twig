@@ -1,0 +1,23 @@
+{% extends "layout/layout.twig" %}
+{% block title %}Namespaces | {{ parent() }}{% endblock %}
+{% block body_class 'namespaces' %}
+
+{% block page_content %}
+  <h1>Namespaces</h1>
+
+  {% if namespaces %}
+    {% set last_name = '' %}
+    {% for namespace in namespaces %}
+      {% set top_level = namespace|split('\\')|first %}
+      {% if top_level != last_name %}
+        {% if last_name %}</ul>{% endif %}
+        <h2>{{ top_level }}</h2>
+        <ul>
+        {% set last_name = top_level %}
+      {% endif %}
+      <li><a href="{{ namespace_path(namespace) }}">{{ namespace }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

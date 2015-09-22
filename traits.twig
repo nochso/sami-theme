@@ -1,0 +1,19 @@
+{% extends "layout/layout.twig" %}
+{% from "macros.twig" import class_link %}
+{% block title %}Traits | {{ parent() }}{% endblock %}
+{% block body_class 'traits' %}
+
+{% block page_content %}
+  <h1>Traits</h1>
+
+  <table class="table">
+  {% for class in classes %}
+    {% if class.trait %}
+      <tr>
+      <td>{{ class_link(class, true) }}</td>
+      <td>{{ class.shortdesc|desc(class) }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+  </table>
+{% endblock %}

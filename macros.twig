@@ -1,0 +1,67 @@
+{% macro namespace_link(namespace) -%}
+  <a href="{{ namespace_path(namespace) }}">{{ namespace }}</a>
+{%- endmacro %}
+
+{% macro class_link(class, absolute) -%}
+  {%- if class.projectclass -%}
+    <a href="{{ class_path(class) }}">
+  {%- elseif class.phpclass -%}
+    <a target="_blank" href="http://php.net/{{ class }}">
+  {%- endif %}
+  {{- _self.abbr_class(class, absolute|default(false)) }}
+  {%- if class.projectclass or class.phpclass %}</a>{% endif %}
+{%- endmacro %}
+
+{% macro method_link(method, absolute, classonly) -%}
+  <a href="{{ method_path(method) }}">
+    {{- _self.abbr_class(method.class) }}{% if not classonly|default(false) %}::{{ method.name }}{% endif -%}
+  </a>
+{%- endmacro %}
+
+{% macro method_link_short(method, absolute, classonly) %}
+  <a href="{{ method_path(method) }}">{{ method.name }}</a>
+{%- endmacro %}
+
+{% macro property_link(property, absolute, classonly) -%}
+  <a href="{{ property_path(property) }}">
+    {{- _self.abbr_class(property.class) }}{% if not classonly|default(true) %}#{{ property.name }}{% endif -%}
+  </a>
+{%- endmacro %}
+
+{% macro abbr_class(class, absolute) -%}
+  <abbr title="{{ class }}">{{ absolute|default(false) ? class : class.shortname }}</abbr>
+{%- endmacro %}
+
+{% macro render_classes(classes) -%}
+
+  <table class="table">
+    {% set prev_namespace = '' %}
+    {% for class in classes %}
+      {% set curr_namespace = class|split('\\', -1)|join('\\')  %}
+      {% if prev_namespace != curr_namespace %}
+        <tr>
+          <td>N</td>
+          <td colspan="2"><h3>{{ curr_namespace }}</h3></td>
+        </tr>
+    {% endif %}
+    <tr>
+      <td>{% if class.isInterface %}I{% elseif class.trait %}T{% else %}C{% endif %}</td>
+      <td>{{ _self.class_link(class, false) }}</td>
+      <td>{{ class.shortdesc|desc(class) }}</td>
+    </tr>
+      {% set prev_namespace = curr_namespace %}
+    {% endfor %}
+  </table>
+{%- endmacro %}
+
+{% macro breadcrumbs(namespace) %}
+  {% set current_ns = '' %}
+  {% for ns in namespace|split('\\') %}
+    {% if current_ns %}
+      {% set current_ns = current_ns ~ '\\' ~ ns %}
+    {% else %}
+      {% set current_ns = ns %}
+    {% endif %}
+    <li><a href="{{ namespace_path(current_ns) }}">{{ ns }}</a></li>
+  {% endfor %}
+{% endmacro %}
