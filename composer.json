@@ -19,5 +19,8 @@
   },
   "config": {
     "bin-dir": "bin"
+  },
+  "require": {
+    "wyrihaximus/html-compress": "^1.0"
   }
 }
