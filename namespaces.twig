@@ -7,17 +7,19 @@
 
   {% if namespaces %}
     {% set last_name = '' %}
+    <table class="table">
     {% for namespace in namespaces %}
       {% set top_level = namespace|split('\\')|first %}
       {% if top_level != last_name %}
-        {% if last_name %}</ul>{% endif %}
-        <h2>{{ top_level }}</h2>
-        <ul>
+        <tr><td colspan="2"><h2>{{ top_level }}</h2></td></tr>
         {% set last_name = top_level %}
       {% endif %}
-      <li><a href="{{ namespace_path(namespace) }}">{{ namespace }}</a></li>
+      <tr>
+        <td><div class="circle circle-n">N</div></td>
+        <td><a href="{{ namespace_path(namespace) }}">{{ namespace }}</a></td>
+      </tr>
     {% endfor %}
-    </ul>
+    </table>
   {% endif %}
 
 {% endblock %}

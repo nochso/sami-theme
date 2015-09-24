@@ -21,7 +21,7 @@ $finder = Finder::create()
 
 $config = array(
     'theme' => 'nochso',
-    'title' => 'Symfony Finder documentation using nochso/sami theme',
+    'title' => 'Symfony Finder API using nochso/sami theme',
     'build_dir' => __DIR__.'/build',
     'cache_dir' => __DIR__.'/cache',
     'template_dirs' => array(__DIR__.'/..'),

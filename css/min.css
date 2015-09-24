@@ -19,6 +19,20 @@ body, textarea, input, select {
     text-decoration: none
 }
 
+a {
+    color: #00E;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #2447f2;
+}
+
+a:hover {
+    color: #00E;
+    text-decoration: underline;
+}
+
 .container {
     margin: 0 20px;
     width: auto
@@ -50,7 +64,6 @@ h1, h2, h3 {
 
 h1 {
     font-size: 2.3em;
-    border-bottom: 1px solid #e1e1e1;
 }
 
 h2 {
@@ -100,7 +113,6 @@ a > abbr {
     float: left
 }
 
-/*.table, .c12 {*/
 .c12 {
     width: 100%
 }
@@ -162,8 +174,43 @@ a > abbr {
 }
 
 .title {
-    font-size: 1.5em;
+    font-size: 2.4em;
     font-weight: 300;
     padding: 10px 0;
 }
 
+.title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px #fff;
+}
+
+.circle-c {
+    background-color: #b6d8fa;
+}
+
+.circle-m {
+    background-color: #FBBFB7;
+}
+
+.circle-p {
+    background-color: #fae6b6;
+}
+
+.circle-i {
+    background-color: #b6fab6;
+}
+
+.circle-n {
+    border: 1px solid #cdcdcd;
+}

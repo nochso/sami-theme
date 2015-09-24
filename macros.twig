@@ -40,12 +40,12 @@
       {% set curr_namespace = class|split('\\', -1)|join('\\')  %}
       {% if prev_namespace != curr_namespace %}
         <tr>
-          <td>N</td>
+          <td><div class="circle circle-n">N</div></td>
           <td colspan="2"><h3>{{ curr_namespace }}</h3></td>
         </tr>
     {% endif %}
     <tr>
-      <td>{% if class.isInterface %}I{% elseif class.trait %}T{% else %}C{% endif %}</td>
+      <td><div class="circle circle-{{ _self.type_short(class)|lower }}">{{ _self.type_short(class) }}</div></td>
       <td>{{ _self.class_link(class, false) }}</td>
       <td>{{ class.shortdesc|desc(class) }}</td>
     </tr>
@@ -64,4 +64,8 @@
     {% endif %}
     <li><a href="{{ namespace_path(current_ns) }}">{{ ns }}</a></li>
   {% endfor %}
+{% endmacro %}
+
+{% macro type_short(class) %}
+{%- if class.isInterface %}I{% elseif class.trait %}T{% else %}C{% endif -%}
 {% endmacro %}
