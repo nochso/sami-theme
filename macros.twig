@@ -69,3 +69,36 @@
 {% macro type_short(class) %}
 {%- if class.isInterface %}I{% elseif class.trait %}T{% else %}C{% endif -%}
 {% endmacro %}
+
+{% macro source_link(project, class) -%}
+  {% if class.sourcepath %}
+    (<a href="{{ class.sourcepath }}">View source</a>)
+  {%- endif %}
+{%- endmacro %}
+
+{% macro hint_link(hints) -%}
+  {% from _self import class_link %}
+  {%- if hints %}
+    {%- for hint in hints %}
+      {%- if hint.class %}
+        {{- class_link(hint.name) }}
+      {%- elseif hint.name %}
+        {{- abbr_class(hint.name) }}
+      {%- endif %}
+      {%- if hint.array %}[]{% endif %}
+      {%- if not loop.last %}|{% endif %}
+    {%- endfor %}
+  {%- endif %}
+{%- endmacro %}
+
+{% macro method_parameters_signature(method) -%}
+  {%- from "macros.twig" import hint_link -%}
+  (
+  {%- for parameter in method.parameters %}
+    {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+    ${{ parameter.name }}
+    {%- if parameter.default %} = {{ parameter.default }}{% endif %}
+    {%- if not loop.last %}, {% endif %}
+  {%- endfor -%}
+  )
+{%- endmacro %}

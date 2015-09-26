@@ -17,7 +17,6 @@ $config = array(
     'title' => 'Symfony Finder API using nochso/sami theme',
     'build_dir' => __DIR__.'/build',
     'cache_dir' => __DIR__.'/cache',
-    'template_dirs' => array(__DIR__.'/..'),
 );
 
 $sami = new Sami($finder, $config);

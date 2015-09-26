@@ -5,14 +5,12 @@
 {% block page_id 'namespace:' ~ (namespace|replace({'\\': '_'})) %}
 
 {% block below_menu %}
-  <ol class="pagination">
-    <li><span class="label label-default">Namespace</span></li>
+  <ol class="breadcrumb">
     {{ breadcrumbs(namespace) }}
   </ol>
 {% endblock %}
 
 {% block page_content %}
-
   <h1>{{ namespace }}</h1>
 
   {% if subnamespaces %}
