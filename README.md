@@ -5,10 +5,10 @@
 
 This is a theme for the [Sami](https://github.com/FriendsOfPHP/Sami) API documentation generator with some added features:
 
-- Includes the source code of the file at the end.
-- Source code highlighting with [prismjs](http://prismjs.com/)
-- Show the value / assignment of class constants
-- HTML is minified using [wyrihaximus/html-compress](https://github.com/WyriHaximus/HtmlCompress)
+- The complete file source is included at the end.
+- Source code highlighting with [prismjs](http://prismjs.com/).
+- Show the value / assignment of class constants.
+- HTML is minified using [wyrihaximus/html-compress](https://github.com/WyriHaximus/HtmlCompress).
 
 ## Installation
 
@@ -60,9 +60,9 @@ This will create the documentation for the files in `src/` using this theme.
 
 ## Contributing
 
-1. [Open an issue](https://github.com/nochso/benchmark/issues/new) if it's worth discussing.
+1. [Open an issue](https://github.com/nochso/sami-theme/issues/new) if it's worth discussing.
 2. Fork this project on Github.
-3. Clone your fork: `git clone git@github.com:yourname/benchmark.git`
+3. Clone your fork: `git clone git@github.com:yourname/sami-theme.git`
 4. Don't forget to `composer update`
 4. Create your feature branch: `git checkout -b my-new-feature`
 5. Commit your changes: `git commit -am 'Add some feature'`
