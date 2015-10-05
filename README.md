@@ -3,22 +3,20 @@
 [![Latest Stable Version](https://poser.pugx.org/nochso/sami-theme/v/stable)](https://packagist.org/packages/nochso/sami-theme)
 [![License](https://poser.pugx.org/nochso/sami-theme/license)](LICENSE)
 
-This is a theme for the [Sami](https://github.com/FriendsOfPHP/Sami) API documentation generator with some added features:
+This is a theme for the [Sami] API documentation generator with some added features:
 
 - The complete file source is included at the end.
 - Source code highlighting with [prismjs](http://prismjs.com/).
 - Show the value / assignment of class constants.
-- HTML is minified using [wyrihaximus/html-compress](https://github.com/WyriHaximus/HtmlCompress).
+- HTML is minified using [wyrihaximus/html-compress][html-compress].
+
+An an example take a look at the [API docs](http://nochso.github.io/Benchmark/docs/) for the [nochso/Benchmark](https://github.com/nochso/Benchmark/) library.
 
 ## Installation
 
-If you haven't already installed Sami, use this to install it and the theme:
+If you haven't used [Sami] before, please read up on its installation and basic usage first.
 
-```sh
-$ composer require sami/sami nochso/sami-theme
-```
-
-Otherwise use this:
+When you're ready, require the theme in your project:
 
 ```sh
 $ composer require nochso/sami-theme
@@ -56,7 +54,18 @@ $sami = \nochso\SamiTheme\Theme::prepare($sami);
 return $sami;
 ```
 
-This will create the documentation for the files in `src/` using this theme.
+This looks for PHP files in `src/` and saves the resulting documentation in `build/`.
+
+These results are now ready for you to upload and share!
+
+## History
+
+### 0.1.1 - 2015-10-05
+#### Changed
+- Use [nochso/html-compress-twig](https://github.com/nochso/html-compress-twig) as Twig extension around [wyrihaximus/html-compress][html-compress].
+
+### 0.1.0 - 2015-09-26
+First public release.
 
 ## Contributing
 
@@ -68,11 +77,6 @@ This will create the documentation for the files in `src/` using this theme.
 5. Commit your changes: `git commit -am 'Add some feature'`
 6. Push to the branch: `git push origin my-new-feature`
 7. Submit a pull request on Github :)
-
-## History
-
-### 0.1.0 - 2015-09-26
-First public release.
 
 ## Credits
 
@@ -96,3 +100,7 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
+
+[Sami]: https://github.com/FriendsOfPHP/Sami
+[html-compress]: https://github.com/WyriHaximus/HtmlCompress
+[benchmark-docs]: http://nochso.github.io/Benchmark/docs/index.html
