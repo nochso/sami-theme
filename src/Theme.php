@@ -2,6 +2,7 @@
 
 namespace nochso\SamiTheme;
 
+use nochso\HtmlCompressTwig\Extension;
 use Sami\Reflection\ConstantReflection;
 use Sami\Sami;
 use Twig_SimpleFunction;
@@ -22,7 +23,7 @@ class Theme
         $constantSource = new Twig_SimpleFunction('constant_source', array(self::class, 'getConstantSource'));
         $sami['twig']->addFunction($fileGetFunction);
         $sami['twig']->addFunction($constantSource);
-        $sami['twig']->addTokenParser(new MinifyHtmlTokenParser());
+        $sami['twig']->addExtension(new Extension());
         $sami['theme'] = 'nochso';
         $sami['template_dirs'] = array_merge($sami['template_dirs'], array(__DIR__.'/..'));
 
