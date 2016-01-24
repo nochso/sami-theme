@@ -26,6 +26,6 @@
     "bin-dir": "bin"
   },
   "require": {
-    "nochso/html-compress-twig": "^0.1.0"
+    "nochso/html-compress-twig": "^1.0.0"
   }
 }
