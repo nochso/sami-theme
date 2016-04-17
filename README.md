@@ -60,6 +60,10 @@ These results are now ready for you to upload and share!
 
 ## History
 
+### 0.2.0 - 2016-04-17
+#### Changed
+- Bump nochso/html-compress-twig to 1.0.0
+
 ### 0.1.1 - 2015-10-05
 #### Changed
 - Use [nochso/html-compress-twig](https://github.com/nochso/html-compress-twig) as Twig extension around [wyrihaximus/html-compress][html-compress].
